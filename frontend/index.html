@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Home</title>
-
+    <!-- fonts awesome -->
+    <script
+      src="https://kit.fontawesome.com/09df8b8701.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
     <!-- fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
@@ -15,20 +25,28 @@
     <link rel="stylesheet" href="./src/css/reset.css" />
     <link rel="stylesheet" href="./src/css/home.css" />
     <!-- js -->
-    <!-- <script src=""></script> -->
+    <script src="./src/js/functions.js"></script>
   </head>
+
   <body>
     <div class="inner-container">
-      <img src="./src/images/cadeado.svg" width="100" alt="" srcset="" />
+      <i class="fa fa-lock padlock" aria-hidden="true"></i>
       <p>Já possui convite?</p>
-
-      <form action="#" method="post" class="form">
-        <label for="email">
-          <span>Email</span>
-          <input type="email" name="email" placeholder="Digite seu email" id="email" class="input-field" />
-        </label>
-        <label for="password">
-          <span>Senha</span>
+      <form class="form" onsubmit="helloWorld(); return false;">
+        <div class="form-element">
+          <input
+            type="text"
+            name="secretKey"
+            placeholder="Digite sua chave secreta"
+            id="secretKey"
+            class="input-field"
+          />
+          <i class="fa fa-question-circle hover-trigger" aria-hidden="true"></i>
+          <span class="hidden-info">
+            Sua chave secreta foi obtida por convite.
+          </span>
+        </div>
+        <div class="form-element">
           <input
             type="password"
             placeholder="Digite sua senha"
@@ -36,9 +54,22 @@
             id="password"
             class="input-field"
           />
-        </label>
-        <button class="submit-button">Entrar</button>
+          <i class="fa fa-question-circle hover-trigger" aria-hidden="true"></i>
+
+          <span class="hidden-info">
+            Sua senha foi obitida com a chave secreta.
+          </span>
+        </div>
+
+        <button class="submit-button" type="submit">
+          <span id="submit-button-text">Entrar</span>
+          <i class="fa fa-spinner loading hide" aria-hidden="true"></i>
+        </button>
       </form>
+
+      <div>
+        <p id="response-output"></p>
+      </div>
     </div>
   </body>
 </html>

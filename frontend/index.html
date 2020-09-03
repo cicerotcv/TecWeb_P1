@@ -23,7 +23,7 @@
     />
     <!-- css -->
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/home.css" />
+    <link rel="stylesheet" href="./src/css/login.css" />
     <!-- js -->
     <script src="./src/js/functions.js"></script>
   </head>
@@ -32,7 +32,7 @@
     <div class="inner-container">
       <i class="fa fa-lock padlock" aria-hidden="true"></i>
       <p>Já possui convite?</p>
-      <form class="form" onsubmit="helloWorld(); return false;">
+      <form class="form" onsubmit="handleSubmit(); return false;">
         <div class="form-element">
           <input
             type="text"
@@ -57,7 +57,7 @@
           <i class="fa fa-question-circle hover-trigger" aria-hidden="true"></i>
 
           <span class="hidden-info">
-            Sua senha foi obitida com a chave secreta.
+            Sua senha foi obtida com a chave secreta.
           </span>
         </div>
 

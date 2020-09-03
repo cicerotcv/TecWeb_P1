@@ -1,0 +1,170 @@
+/* font-family: 'Ubuntu Mono', monospace; */
+body {
+  background-color: black;
+  color: #fafbfc;
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: bold;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.outer-container {
+  width: 90vw;
+  min-height: 90vh;
+  margin: auto 0;
+  background-color: #202020;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.inner-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+  min-height: 90vh;
+  margin: auto 0;
+  background-color: #202020;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form-element {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px 0px;
+  width: 300px;
+  align-items: center;
+}
+.form-element:first-of-type {
+  margin-top: 15px;
+}
+.hidden-info {
+  display: flex;
+  width: 300px;
+  color: #ffff00;
+  font-size: 0.7rem;
+  /* overflow: hidden; */
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -o-transform: rotateX(90deg);
+}
+.hover-trigger {
+  color: #ffff00;
+  /* background-color: aqua; */
+  flex-basis: 8%;
+  text-align: right;
+  vertical-align: middle;
+  line-height: 30px;
+  align-self: stretch;
+}
+.hover-trigger:hover + .hidden-info {
+  height: auto;
+  transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+}
+.input-field {
+  background-color: transparent;
+  flex-basis: 92%;
+  border: solid 2px #fafbfc;
+  box-sizing: border-box;
+  height: 30px;
+  padding: 5px 10px;
+  color: #fafbfc;
+  font-family: "Ubuntu Mono", monospace;
+  width: 100%;
+  /* margin-right: 10px; */
+  margin-bottom: 7px;
+  font-weight: bold;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.submit-button {
+  background-color: transparent;
+  border: solid 1px #fafbfc;
+  height: 30px;
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: bold;
+  border-radius: 7px;
+  margin-top: 10px;
+  color: #fafbfc;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  color: #202020;
+  background-color: #fafbfc;
+}
+.submit-button:active {
+  outline: none;
+}
+
+.padlock {
+  font-size: 100px;
+  margin-bottom: 20px;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+}
+}
+
+.loading {
+    color: #ffff00;
+    animation: spinner 1s linear infinite;
+    -webkit-animation: spinner 1s linear infinite;
+}
+.hide {
+    display: none;
+}
+.submit-button:hover .loading {
+    color: #202020;
+}
+#response-output {
+    margin-top: 20px;
+}

@@ -28,13 +28,16 @@
   </head>
   <body>
     <div class="outer-container">
-      <div class="new-card-outer">
-        <button class="new-card-button positive" onclick="createCard(this)">
+      <div class="header-outer">
+        <button class="header-button positive" onclick="createCard(this)">
           <i class="fa fa-plus" aria-hidden="true" title="adicionar card"></i>
         </button>
-        <button class="new-card-button positive">
-          <i class="fa fa-search" aria-hidden="true" title="pesquisar"></i>
-        </button>
+        <div class="searchbox negative">
+          <input type="text" placeholder="Pesquisar" class="search-field">
+          <button class="search-button" onclick="search()">
+            <i class="fa fa-search" aria-hidden="true" title="pesquisar"></i>
+          </button>
+        </div>
       </div>
       <div class="inner-container"></div>
     </div>

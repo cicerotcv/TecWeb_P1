@@ -30,7 +30,7 @@ body {
   background-color: #202020;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 300px;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -60,6 +60,7 @@ body {
   gap: 1rem;
   overflow: auto;
 }
+
 .card-outer .media-wrapper img,
 .card-outer .media-wrapper .input-media {
   box-shadow: 0px 10px 15px #202020;

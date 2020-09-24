@@ -14,7 +14,7 @@ public class DAO {
 
 	public DAO() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://localhost/MyNotes", "root", "123123123");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost/my_notes", "root", "123123123");
 
 	}
 
@@ -28,7 +28,7 @@ public class DAO {
 			Note note = new Note();
 			note.setId(rs.getInt("id"));
 			note.setTitle(rs.getString("title"));
-			note.setTextContent(rs.getString("text"));
+			note.setTextContent(rs.getString("content"));
 			note.setLastModified(rs.getTimestamp("lastModified"));
 
 			notes.add(note);
@@ -42,7 +42,7 @@ public class DAO {
 	}
 
 	public void createNotes(Note note) throws SQLException {
-		String sql = "INSERT INTO Notes (title, text) VALUES (?, ?)";
+		String sql = "INSERT INTO Notes (title, content) VALUES (?, ?)";
 
 		PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -51,11 +51,10 @@ public class DAO {
 
 		stmt.execute();
 		stmt.close();
-
 	}
 
 	public void updateNotes(Note note) throws SQLException {
-		String sql = "UPDATE Notes SET title=?, text=?, lastModified=? WHERE id=?";
+		String sql = "UPDATE Notes SET title=?, content=?, lastModified=? WHERE id=?";
 
 		PreparedStatement stmt = this.connection.prepareStatement(sql);
 
@@ -70,7 +69,6 @@ public class DAO {
 
 		stmt.execute();
 		stmt.close();
-
 	}
 
 	public void deleteNotes(Note note) throws SQLException {
@@ -82,6 +80,7 @@ public class DAO {
 
 		stmt.execute();
 		stmt.close();
+
 	}
 
 	public void close() throws SQLException {

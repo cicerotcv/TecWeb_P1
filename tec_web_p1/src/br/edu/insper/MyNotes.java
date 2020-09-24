@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class MyNotes
  */
@@ -31,6 +33,7 @@ public class MyNotes extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -41,25 +44,39 @@ public class MyNotes extends HttpServlet {
 			DAO dao = new DAO();
 			List<Note> notes = dao.getNotes();
 			if (!notes.isEmpty()) {
+				String jsonNotes = new Gson().toJson(notes);
 
-				String jsonToBeParsed = "[";
-				for (Note note : notes) {
-					jsonToBeParsed = jsonToBeParsed.concat("{".concat("\"title\":\"").concat(note.getTitle())
-							.concat("\",\"text\":\"").concat(note.getTextContent()).concat("\",\"id\":")
-							.concat(String.valueOf(note.getId())).concat(",\"timestamp\":")
-							.concat(String.valueOf(note.getLastModified().getTime())).concat("},"));
-				}
-				jsonToBeParsed = jsonToBeParsed.substring(0, jsonToBeParsed.length() - 1).concat("]");
-
-				System.out.println(jsonToBeParsed);
-				response.setContentType("text/plain; charset=UTF-8");
+//				System.out.println(jsonNotes);
+//				PrintWriter out = response.getWriter();
+				response.setContentType("application/json;charset=UTF-8");
 				response.setCharacterEncoding("UTF-8");
-				out.write(jsonToBeParsed);
+				out.print(jsonNotes);
 				out.flush();
-				out.close();
+
+//				String jsonToBeParsed = "[";
+//				for (Note note : notes) {
+////					jsonToBeParsed = jsonToBeParsed.concat("{".concat("\"title\":\"").concat(note.getTitle())
+////							.concat("\",\"text\":\"").concat(note.getTextContent()).concat("\",\"id\":")
+////							.concat(String.valueOf(note.getId())).concat(",\"timestamp\":")
+////							.concat(String.valueOf(note.getLastModified().getTime())).concat("},"));
+//					jsonToBeParsed = jsonToBeParsed
+//							.concat(String.format("{\"title\": \"%s\", \"text\":\"%s\", \"id\":%d, \"timestamp\":%tQ},",
+//									note.getTitle(), note.getTextContent(), note.getId(), note.getLastModified()));
+//				}
+//				jsonToBeParsed = jsonToBeParsed.substring(0, jsonToBeParsed.length() - 1).concat("]");
+//				
+////				System.out.println(jsonToBeParsed);
+////				response.setContentType("text/html; charset=UTF-8");
+////				response.setCharacterEncoding("UTF-8");
+//				out.write(jsonToBeParsed);
+//				out.flush();
+//				out.close();
 			}
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -70,6 +87,7 @@ public class MyNotes extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -92,7 +110,10 @@ public class MyNotes extends HttpServlet {
 			dao.createNotes(note);
 			dao.close();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -102,6 +123,7 @@ public class MyNotes extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
+	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -123,7 +145,10 @@ public class MyNotes extends HttpServlet {
 			dao.updateNotes(note);
 			dao.close();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -132,6 +157,7 @@ public class MyNotes extends HttpServlet {
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
+	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -146,7 +172,10 @@ public class MyNotes extends HttpServlet {
 			dao.deleteNotes(note);
 			dao.close();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

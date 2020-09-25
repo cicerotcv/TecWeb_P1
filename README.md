@@ -2,7 +2,7 @@
 
 ## Criação do MySQL
 
-A criação do banco de dados em MySQL foi criado da seguinte maneira:
+A criação do banco de dados em MySQL foi feita da seguinte maneira:
 
 ``` sql
     CREATE DATABASE my_notes;

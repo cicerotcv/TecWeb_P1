@@ -4,7 +4,7 @@
 
 O a criação do banco de dados em MySQL foi criado da seguinte maneira:
 
-```sql
+``` sql
     CREATE DATABASE my_notes;
     USE my_notes;
     CREATE TABLE Notes (
@@ -18,8 +18,7 @@ O a criação do banco de dados em MySQL foi criado da seguinte maneira:
 ## Acesso
 
     http://localhost:8080/tec_web_p1/index.html
-
-
+ 
 ## Funcionalidade
 
 Para criar uma nota, clique em adicionar (botão (+) na parte superior) e será adicionada uma nota em branco na tela. Essa nota guardará no banco de dados as alterações feitas.

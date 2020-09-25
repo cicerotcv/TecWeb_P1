@@ -1,5 +1,9 @@
 body {
-  background-color: #200000;
+  /* background-color: #200000; */
+  background: url("https://images.unsplash.com/photo-1504519560822-bed2d817f87f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fafbfc;
   font-family: "Ubuntu Mono", monospace;
   font-weight: bold;
@@ -20,34 +24,37 @@ body {
 }
 
 .inner-container {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-outer {
   background-color: #202020;
+  opacity: 0.9;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   height: 300px;
+  width: 80vw;
+  max-width: 500px;
+  border: solid 1px #fafbfc10;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
-  border-color: transparent;
   transition: border-color 3s;
   -webkit-transition: border-color 3s;
   -moz-transition: border-color 3s;
   -ms-transition: border-color 3s;
   -o-transition: border-color 3s;
 }
-.card-outer:only-child {
-  max-width: 500px;
-}
 
-.card-outer .media-wrapper {
+/* .card-outer:only-child {
+  max-width: 500px;
+} */
+
+/* .card-outer .media-wrapper {
   width: 100%;
   background-color: #303030;
   overflow: hidden;
@@ -118,42 +125,51 @@ body {
 }
 .card-outer .media-wrapper .media-item:hover button:hover {
   box-shadow: 0px 0px 10px currentColor;
-}
+} */
+
 .card-outer .content {
-  background-color: transparent;
-  width: 100%;
-  margin: 0;
-  padding: 1rem;
+  background-color: #fafbfc10;
+  display: flex;
+  margin: 0.25rem 0.5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   font-size: 1.2rem;
-  color: #ff2000;
-  text-shadow: 0px 0px 10px #ff2000;
+  color: #fafbfc;
   font-family: "Ubuntu Mono", monospace;
   resize: none;
   border: 1px solid transparent;
   outline-color: transparent;
   height: 100%;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
 }
+
 .card-outer .content:focus,
 .card-outer .title:focus {
   border: 1px solid transparent !important;
   outline: transparent;
 }
 
-
 .card-outer .title {
-  background-color: transparent;
-  width: 100%;
-  margin: 0;
-  padding: 1rem;
+  background-color: #fafbfc10;
+  display: flex;
+  margin: 0.25rem 0.5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   font-size: 1.2rem;
-  color: #ff2000;
-  text-shadow: 0px 0px 10px #ff2000;
+  color: #fafbfc;
   font-family: "Ubuntu Mono", monospace;
   font-weight: bold;
   outline-color: transparent;
   border: 1px solid transparent;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
 }
 .card-outer .creation-time {
   font-weight: normal;

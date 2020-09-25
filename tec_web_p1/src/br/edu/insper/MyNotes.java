@@ -46,31 +46,11 @@ public class MyNotes extends HttpServlet {
 			if (!notes.isEmpty()) {
 				String jsonNotes = new Gson().toJson(notes);
 
-//				System.out.println(jsonNotes);
-//				PrintWriter out = response.getWriter();
 				response.setContentType("application/json;charset=UTF-8");
 				response.setCharacterEncoding("UTF-8");
 				out.print(jsonNotes);
 				out.flush();
 
-//				String jsonToBeParsed = "[";
-//				for (Note note : notes) {
-////					jsonToBeParsed = jsonToBeParsed.concat("{".concat("\"title\":\"").concat(note.getTitle())
-////							.concat("\",\"text\":\"").concat(note.getTextContent()).concat("\",\"id\":")
-////							.concat(String.valueOf(note.getId())).concat(",\"timestamp\":")
-////							.concat(String.valueOf(note.getLastModified().getTime())).concat("},"));
-//					jsonToBeParsed = jsonToBeParsed
-//							.concat(String.format("{\"title\": \"%s\", \"text\":\"%s\", \"id\":%d, \"timestamp\":%tQ},",
-//									note.getTitle(), note.getTextContent(), note.getId(), note.getLastModified()));
-//				}
-//				jsonToBeParsed = jsonToBeParsed.substring(0, jsonToBeParsed.length() - 1).concat("]");
-//				
-////				System.out.println(jsonToBeParsed);
-////				response.setContentType("text/html; charset=UTF-8");
-////				response.setCharacterEncoding("UTF-8");
-//				out.write(jsonToBeParsed);
-//				out.flush();
-//				out.close();
 			}
 
 		} catch (SQLException e) {

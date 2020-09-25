@@ -19,17 +19,20 @@ function doPost(title, text) {
 }
 
 async function doGet() {
-	
-	const myHeaders = new Headers({
-		"Content-type":"application/json;charset=UTF-8"
-	})
+
+    const myHeaders = new Headers({
+        "Content-type": "application/json;charset=UTF-8"
+    });
     const myInit = {
         method: "GET",
-		headers: myHeaders
+        headers: myHeaders
     };
+
     const baseUrl = window.location.href.replace('index.html', 'MyNotes?');
+
     return await fetch(baseUrl, myInit)
         .then((response) => {
+            //			console.log(response.json());
             return response.json();
         })
         .then((json) => {
@@ -42,7 +45,7 @@ async function doGet() {
                 console.log("Erro ao baixar nota; Provavelmente não existe nenhuma")
                 return []
             }
-        })
+        });
 }
 
 async function doDelete(id, callback = () => { }) {
@@ -50,7 +53,7 @@ async function doDelete(id, callback = () => { }) {
         const myInit = { method: "DELETE" };
         const baseUrl = window.location.href.replace('index.html', 'MyNotes?');
         const params = new URLSearchParams({
-            id: Number(id)
+            id: Number(id),
         });
         fetch(`${baseUrl}${params.toString()}`, myInit)
             .then((response) => {
@@ -209,7 +212,9 @@ function createNote(node) {
     const title = $(inputField).val();
     const text = $(textAreaField).val();
     doPost(title, text)
-	window.location.reload();
+	if (!!text.length && !!title.length) {	
+	    window.location.reload();
+	}
 }
 
 function confirmDelete(node) {
@@ -227,7 +232,11 @@ function deleteCard(node) {
 
     // implementar delete do server
     const id = $(cardID).attr("id");
-    doDelete(id, () => { $(card).remove(); })
+	if (!!id.length) {
+    	doDelete(id, () => { $(card).remove(); })
+	} else {
+		 $(card).remove();
+	}
 
 }
 
@@ -273,7 +282,7 @@ function toggleButtonsWrapper(node) {
 }
 
 function search() {
-	
+
     window.location.reload()
     console.log(randomID(20))
 }
@@ -326,11 +335,12 @@ function Card(data) {
     <div class="header-options hidden">
         <span style="margin-right: 10px; color: #666">Apagar nota?</span>
         <button class="header-button" onclick="deleteCard(this)">
-            <!-- <i class="fa fa-thumbs-up positive-style" aria-hidden="true"></i> -->
-            <span class="positive-style">Sim</span>
-        </button>
-        <button class="header-button" onclick="cancelDelete(this)">
-            <span class="negative-style">Não</span>
+            <!-- <i class="fa fa-thumbs-up positive-style" aria-hidden="true"></i> --> 
+             <span class="positive-style">Sim</span>  
+            </button>
+            <button class="header-button" onclick="cancelDelete(this)">
+            <span class="negative-style">Não</span> 
+             
             <!-- <i class="fa fa-thumbs-down negative-style" aria-hidden="true"></i> -->
         </button>
     </div>
@@ -339,7 +349,7 @@ function Card(data) {
     <input type="text" placeholder="${title.placeholder || ""}" value="${title.value || ""}" class="title" readonly />
     <textarea name="" class="content" placeholder="${content.placeholder || ""}" readonly>${content.value || ""}</textarea>
     <p class="footer">
-        <span class="creation-time neutral-text" title="última modificação" onselect="(event) => {console.log(event)}" >${new Date(lastModified).toLocaleString()}</span>
+        <span class="creation-time neutral-text" title="última modificação" onselect="(event) => {console.log(event)}" >${update ? new Date(lastModified).toLocaleString() : new Date(lastModified).toLocaleDateString()}</span>
         <span class="footer-id positive-text" id="${cardID}" >${cardID}</span>
     </p>
 </div>`
